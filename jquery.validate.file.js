@@ -139,10 +139,64 @@
 
                 }
             }
+
+            return is_valid;
         },
         function (params, element) {
             return formatter(
                 "File must be at least {0}{1} large.",
+                [params.size || 100, params.unit || "KB"]
+            );
+        }
+    );
+
+    /**
+     * Validates that a file selected for upload is no loarger than a given
+     * file size.
+     *
+     * @param obj params
+     *   An optional set of configuration parameters.  Supported options are:
+     *     "unit" : string (default "KB")
+     *       The unit of measure of the file size limit is in.  Valid inputs
+     *       are "B", "KB", "MB" and "GB"
+     *     "size" : number (default 100)
+     *        The maximum size of the file, in the above units, that the file
+     *        can be to be accepted as "valid"
+     */
+    $.validator.addMethod(
+        "maxFileSize",
+        function (value, element, params) {
+
+            var files,
+                unit = params.unit || "KB",
+                size = params.size || 100,
+                max_file_size = fileSizeToBytes(size, unit),
+                is_valid = false;
+
+            if (!is_supported_browser || this.optional(element)) {
+
+                is_valid = true;
+
+            } else {
+
+                files = element.files;
+
+                if (files.length < 1) {
+
+                    is_valid = false;
+
+                } else {
+
+                    is_valid = files[0].type.size <= max_file_size;
+
+                }
+            }
+
+            return is_valid;
+        },
+        function (params, element) {
+            return formatter(
+                "File cannot be larger than {0}{1}.",
                 [params.size || 100, params.unit || "KB"]
             );
         }

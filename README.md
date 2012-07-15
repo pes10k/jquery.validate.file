@@ -36,7 +36,23 @@ It accepts two optional configuration parameters
 *   *size* : **number** (default 100)
 
     The minimum size of the file, in the above units, that the file
-    must be, to be accepted as "valid"
+    must be to be accepted as "valid"
+
+### "maxFileSize"
+
+Validates that a file selected for upload is no larger than a given file size.
+
+It accepts two optional configuration parameters
+
+*   *unit* : **string** (default "KB")
+
+    The unit of measure of the file size limit is in.  Valid inputs
+    are "B", "KB", "MB" and "GB"
+
+*   *size* : **number** (default 100)
+
+    The maximum size of the file, in the above units, that the file
+    can be to be accepted as "valid"
 
 ## Author
 
