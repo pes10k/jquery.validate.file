@@ -135,7 +135,7 @@
 
                 } else {
 
-                    is_valid = files[0].type.size >= min_file_size;
+                    is_valid = files[0].size >= min_file_size;
 
                 }
             }
@@ -187,7 +187,7 @@
 
                 } else {
 
-                    is_valid = files[0].type.size <= max_file_size;
+                    is_valid = files[0].size <= max_file_size;
 
                 }
             }
