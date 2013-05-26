@@ -60,7 +60,7 @@ It accepts two optional configuration parameters
 Below is a simple, example for that will only allow the user to upload a
 text, gzip or zip file that is between 10-100Kb.
 
-``
+```
     <form method="post" enctype="multipart/form-data" id="upload_form">
         <input type="file" name="example_file" name="example_file">
         <button type="submit">Upload</button>
@@ -90,7 +90,7 @@ text, gzip or zip file that is between 10-100Kb.
             });
     });
     </script>
-``
+```
 
 ## Author
 
