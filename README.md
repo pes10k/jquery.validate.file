@@ -54,6 +54,44 @@ It accepts two optional configuration parameters
     The maximum size of the file, in the above units, that the file
     can be to be accepted as "valid"
 
+
+## Example
+
+Below is a simple, example for that will only allow the user to upload a
+text, gzip or zip file that is between 10-100Kb.
+
+``
+    <form method="post" enctype="multipart/form-data" id="upload_form">
+        <input type="file" name="example_file" name="example_file">
+        <button type="submit">Upload</button>
+    </form>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script>
+    $(function () {
+        $("#upload_form")
+            .validate({
+                rules: {
+                    example_file: {
+                        fileType: {
+                            types: ["text", "gzip", "zip"]
+                        },
+                    maxFileSize: {
+                        "unit": "KB",
+                        "size": 100
+                    },
+                    minFileSize: {
+                        "unit": "KB",
+                        "size": "10"
+                    }
+                }
+            });
+    });
+    </script>
+``
+
 ## Author
 
 Peter E. Snyder - snyderp@gmail.com
